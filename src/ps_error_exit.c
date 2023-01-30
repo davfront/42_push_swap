@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ps_error_exit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 13:32:48 by dapereir          #+#    #+#             */
-/*   Updated: 2023/01/30 14:22:40 by dapereir         ###   ########.fr       */
+/*   Created: 2022/12/22 15:05:20 by dapereir          #+#    #+#             */
+/*   Updated: 2023/01/30 14:22:25 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <libft.h>
-
-typedef struct s_item {
-	int	index;
-	int value;
-}				t_item;
-
-void	ps_error_exit();
-
-# endif
+void	ps_error_exit()
+{
+	ft_putstr_fd("ERROR\n", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}

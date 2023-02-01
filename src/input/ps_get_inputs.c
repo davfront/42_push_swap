@@ -74,7 +74,7 @@ static void	ps_set_input(t_ps *ps, char **str, t_item *item)
 	ft_free((void **)str);
 }
 
-void	ps_get_inputs(t_ps *ps, int argc, char **argv)
+static void	ps_parse_inputs(t_ps *ps, int argc, char **argv)
 {
 	char	**strs;
 	int		n;
@@ -100,4 +100,11 @@ void	ps_get_inputs(t_ps *ps, int argc, char **argv)
 		ft_free((void **)&strs);
 		i++;
 	}
+}
+
+void	ps_get_inputs(t_ps *ps, int argc, char **argv)
+{
+	ps_parse_inputs(ps, argc, argv);
+	ps_check_duplicates(ps);
+	ps_set_indexes(ps);
 }

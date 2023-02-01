@@ -20,6 +20,8 @@ SRCS_FILES			=	\
 						utils/ps_init.c\
 						utils/ps_free.c\
 						utils/ps_error_exit.c\
+						utils/ps_get_value.c\
+						utils/ps_get_index.c\
 						\
 						input/ps_check_duplicates.c\
 						input/ps_set_indexes.c\
@@ -29,6 +31,12 @@ SRCS_FILES			=	\
 						cmd/ps_push.c\
 						cmd/ps_rotate.c\
 						cmd/ps_reverse_rotate.c\
+						cmd/ps_cmd.c\
+						\
+						sort/ps_sort_2.c\
+						sort/ps_sort_3.c\
+						sort/ps_sort_radix.c\
+						sort/ps_sort.c\
 						\
 						push_swap.c\
 

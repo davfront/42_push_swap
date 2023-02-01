@@ -27,15 +27,31 @@ typedef struct s_ps {
 	t_list	*b;
 }			t_ps;
 
+typedef enum e_cmd {
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}			t_cmd;
+
 // utils
 void	ps_init(t_ps *ps);
 void	ps_free(t_ps *ps);
 void	ps_error_exit(t_ps *ps);
 void	ps_error_exit_if(t_ps *ps, int condition);
+int		ps_get_value(t_list	*node);
+int		ps_get_index(t_list	*node);
 
 // input
-void    ps_check_duplicates(t_ps *ps);
-void    ps_set_indexes(t_ps *ps);
+void	ps_check_duplicates(t_ps *ps);
+void	ps_set_indexes(t_ps *ps);
 void	ps_get_inputs(t_ps *ps, int argc, char **argv);
 
 // cmd
@@ -50,5 +66,12 @@ void	ps_rr(t_ps *ps);
 void	ps_rra(t_ps *ps);
 void	ps_rrb(t_ps *ps);
 void	ps_rrr(t_ps *ps);
+void	ps_cmd(t_ps *ps, t_cmd cmd);
 
-# endif
+// sort
+void	ps_sort_2(t_ps *ps);
+void	ps_sort_3(t_ps *ps);
+void	ps_sort_radix(t_ps *ps);
+void	ps_sort(t_ps *ps);
+
+#endif

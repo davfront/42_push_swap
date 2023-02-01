@@ -37,19 +37,8 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	ps_init(&ps);
 	ps_get_inputs(&ps, argc, argv);
-	ps_check_duplicates(&ps);
-	ps_set_indexes(&ps);
-	// ps_pb(&ps);
-	// ps_pb(&ps);
-	// ps_pb(&ps);
-	// ps_pb(&ps);
+	ps_sort(&ps);
 	// ps_print_ab(&ps);
-	// ft_printf("rra\n");ps_rra(&ps);
-	// ps_print_ab(&ps);
-	// ft_printf("rra\n");ps_rra(&ps);
-	// ps_print_ab(&ps);
-	// ft_printf("rra\n");ps_rra(&ps);
-	ps_print_ab(&ps);
 	ps_free(&ps);
 	return (EXIT_SUCCESS);
 }

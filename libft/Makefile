@@ -70,6 +70,7 @@ SRCS			=	char/ft_isalpha.c\
 					lst/ft_lstclear.c\
 					lst/ft_lstiter.c\
 					lst/ft_lstmap.c\
+					lst/ft_lst_by_index.c\
 					\
 					gnl/ft_gnl.c\
 					\

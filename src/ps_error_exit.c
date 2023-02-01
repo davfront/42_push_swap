@@ -14,6 +14,7 @@
 
 void	ps_error_exit()
 {
+	// TODO free all
 	ft_putstr_fd("ERROR\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

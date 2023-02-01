@@ -17,6 +17,13 @@ CFLAGS				=	-Wall -Wextra -Werror
 RM					=	rm -rf
 
 SRCS_FILES			=	\
+						ps_error_exit.c\
+						\
+						cmd/ps_swap.c\
+						cmd/ps_push.c\
+						cmd/ps_rotate.c\
+						cmd/ps_reverse_rotate.c\
+						\
 						push_swap.c\
 
 SRCS_DIR			=	./src

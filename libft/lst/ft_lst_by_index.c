@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lst_by_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 14:14:54 by dapereir          #+#    #+#             */
-/*   Updated: 2023/01/31 17:24:47 by dapereir         ###   ########.fr       */
+/*   Created: 2022/11/18 14:15:39 by dapereir          #+#    #+#             */
+/*   Updated: 2023/01/31 17:25:07 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lst_by_index(t_list *lst, int i)
 {
 	t_list	*node;
+	int		size;
 
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
+	if (!lst)
+		return (NULL);
+	size = ft_lstsize(lst);
+	if (i < 0 || i > size - 1)
+		return (NULL);
+	node = lst;
+	while (node->next && i > 0)
 	{
-		*lst = new;
-		return ;
-	}
-	node = *lst;
-	while (node->next)
 		node = node->next;
-	node->next = new;
+		i--;
+	}
+	return (node);
 }

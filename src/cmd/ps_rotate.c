@@ -1,30 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ps_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 14:14:54 by dapereir          #+#    #+#             */
-/*   Updated: 2023/01/31 17:24:47 by dapereir         ###   ########.fr       */
+/*   Created: 2023/01/31 16:12:46 by dapereir          #+#    #+#             */
+/*   Updated: 2023/01/31 16:59:58 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+static void	ps_rotate(t_list **lst)
 {
-	t_list	*node;
+	t_list	*first;
+	t_list	*last;
 
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
+	if (*lst && ft_lstsize(*lst) >= 2)
 	{
-		*lst = new;
-		return ;
+		first = *lst;
+		last = ft_lstlast(*lst);
+		*lst = first->next;
+		first->next = NULL;
+		last->next = first;
 	}
-	node = *lst;
-	while (node->next)
-		node = node->next;
-	node->next = new;
+}
+
+void	ps_ra(t_ps *ps)
+{
+	if (ps && ps->a)
+		ps_rotate(&ps->a);
+}
+
+void	ps_rb(t_ps *ps)
+{
+	if (ps && ps->b)
+		ps_rotate(&ps->b);
+}
+
+void	ps_rr(t_ps *ps)
+{
+	ps_ra(ps);
+	ps_rb(ps);
 }

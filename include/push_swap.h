@@ -27,9 +27,18 @@ typedef struct s_ps {
 	t_list	*b;
 }			t_ps;
 
-void	ps_error_exit();
+// utils
+void	ps_init(t_ps *ps);
+void	ps_free(t_ps *ps);
+void	ps_error_exit(t_ps *ps);
+void	ps_error_exit_if(t_ps *ps, int condition);
 
-// commands
+// input
+void    ps_check_duplicates(t_ps *ps);
+void    ps_set_indexes(t_ps *ps);
+void	ps_get_inputs(t_ps *ps, int argc, char **argv);
+
+// cmd
 void	ps_sa(t_ps *ps);
 void	ps_sb(t_ps *ps);
 void	ps_ss(t_ps *ps);

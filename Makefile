@@ -17,7 +17,13 @@ CFLAGS				=	-Wall -Wextra -Werror
 RM					=	rm -rf
 
 SRCS_FILES			=	\
-						ps_error_exit.c\
+						utils/ps_init.c\
+						utils/ps_free.c\
+						utils/ps_error_exit.c\
+						\
+						input/ps_check_duplicates.c\
+						input/ps_set_indexes.c\
+						input/ps_get_inputs.c\
 						\
 						cmd/ps_swap.c\
 						cmd/ps_push.c\

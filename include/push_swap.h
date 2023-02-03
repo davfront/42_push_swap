@@ -76,10 +76,12 @@ int		ps_find_pos_index(t_list *lst, int index);
 
 // sort
 void	ps_move_index_to_top_a(t_ps *ps, int index);
+void	ps_move_index_to_top_b(t_ps *ps, int index);
 void	ps_sort_2(t_ps *ps);
 void	ps_sort_3(t_ps *ps);
 void	ps_sort_3_more(t_ps *ps);
 void	ps_sort_radix(t_ps *ps);
+void	ps_sort_by_chunk(t_ps *ps, int chunk_size);
 void	ps_sort(t_ps *ps);
 
 void	ps_print_ab(t_ps *ps);

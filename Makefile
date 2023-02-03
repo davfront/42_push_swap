@@ -37,11 +37,12 @@ SRCS_FILES			=	\
 						list/ps_is_list_sorted_with_offset.c\
 						list/ps_find_pos_index.c\
 						\
-						sort/ps_move_index_to_top_a.c\
+						sort/ps_move_index_to_top.c\
 						sort/ps_sort_2.c\
 						sort/ps_sort_3.c\
 						sort/ps_sort_3_more.c\
 						sort/ps_sort_radix.c\
+						sort/ps_sort_by_chunk.c\
 						sort/ps_sort.c\
 						\
 						ps_print_ab.c\

@@ -44,10 +44,10 @@ typedef enum e_cmd {
 // utils
 void	ps_init(t_ps *ps);
 void	ps_free(t_ps *ps);
+void	ps_crash_exit();
+void	ps_crash_exit_if(int condition);
 void	ps_error_exit(t_ps *ps);
 void	ps_error_exit_if(t_ps *ps, int condition);
-int		ps_get_value(t_list	*node);
-int		ps_get_index(t_list	*node);
 
 // input
 void	ps_check_duplicates(t_ps *ps);
@@ -68,10 +68,20 @@ void	ps_rrb(t_ps *ps);
 void	ps_rrr(t_ps *ps);
 void	ps_cmd(t_ps *ps, t_cmd cmd);
 
+// list
+int		ps_get(t_list *node, int offset);
+int		ps_is_list_sorted(t_list *lst);
+int		ps_is_list_sorted_with_offset(t_list *lst);
+int		ps_find_pos_index(t_list *lst, int index);
+
 // sort
+void	ps_move_index_to_top_a(t_ps *ps, int index);
 void	ps_sort_2(t_ps *ps);
 void	ps_sort_3(t_ps *ps);
+void	ps_sort_3_more(t_ps *ps);
 void	ps_sort_radix(t_ps *ps);
 void	ps_sort(t_ps *ps);
+
+void	ps_print_ab(t_ps *ps);
 
 #endif

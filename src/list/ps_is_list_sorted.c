@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_get_index.c                                     :+:      :+:    :+:   */
+/*   ps_is_list_sorted.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 14:17:57 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/01 14:21:25 by dapereir         ###   ########.fr       */
+/*   Created: 2023/02/01 13:41:48 by dapereir          #+#    #+#             */
+/*   Updated: 2023/02/02 16:02:23 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_get_index(t_list	*node)
+int	ps_is_list_sorted(t_list *lst)
 {
-	t_item	*item;
+	t_list	*node;
 
-	if (!node || !node->content)
-		return (-1);
-	item = (t_item *)(node->content);
-	return (item->index);
+	node = lst;
+	while (node->next)
+	{
+		if (ps_get(node, 0) > ps_get(node, 1))
+			return (0);
+		node = node->next;
+	}
+	return (1);
 }

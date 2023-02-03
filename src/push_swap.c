@@ -12,23 +12,6 @@
 
 #include "push_swap.h"
 
-void	ps_print_item(void *item)
-{
-	t_item	*item2;
-
-	item2 = (t_item *)item;
-	if (item2)
-		ft_printf("\t%i\t%i\n", item2->index, item2->value);
-}
-
-void	ps_print_ab(t_ps *ps)
-{
-	ft_printf("<A (%i)>\n", ft_lstsize(ps->a));
-	ft_lstiter(ps->a, ps_print_item);
-	ft_printf("<B (%i)>\n", ft_lstsize(ps->b));
-	ft_lstiter(ps->b, ps_print_item);
-}
-
 int	main(int argc, char **argv)
 {
 	t_ps	ps;
@@ -37,8 +20,9 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	ps_init(&ps);
 	ps_get_inputs(&ps, argc, argv);
+	ps_print_ab(&ps);
 	ps_sort(&ps);
-	// ps_print_ab(&ps);
+	ps_print_ab(&ps);
 	ps_free(&ps);
 	return (EXIT_SUCCESS);
 }

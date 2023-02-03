@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort_2.c                                        :+:      :+:    :+:   */
+/*   ps_find_pos_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:41:48 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/02 16:12:48 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:58:27 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_sort_2(t_ps *ps)
+int	ps_find_pos_index(t_list *lst, int index)
 {
-	int	i1;
-	int	i2;
+	int		size;
+	int		pos;
 
-	ps_crash_exit_if(ft_lstsize(ps->a) != 2);
-	i1 = ps_get(ps->a, 0);
-	i2 = ps_get(ps->a, 1);
-	if (i2 < i1)
-		ps_cmd(ps, SA);
+	size = ft_lstsize(lst);
+	pos = 0;
+	while (pos < size)
+	{
+		if (ps_get(lst, pos) == index)
+			return (pos);
+		pos++;
+	}
+	return (-1);
 }

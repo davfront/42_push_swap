@@ -12,6 +12,18 @@
 
 #include "push_swap.h"
 
+void	ps_crash_exit()
+{
+	ft_putstr_fd("UNEXPECTED ERROR\n", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+
+void	ps_crash_exit_if(int condition)
+{
+	if (condition)
+		ps_crash_exit();
+}
+
 void	ps_error_exit(t_ps *ps)
 {
 	ps_free(ps);

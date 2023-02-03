@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort_2.c                                        :+:      :+:    :+:   */
+/*   ps_is_list_sorted_with_offset.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:41:48 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/02 16:12:48 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:02:36 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_sort_2(t_ps *ps)
+int	ps_is_list_sorted_with_offset(t_list *lst)
 {
-	int	i1;
-	int	i2;
+	int		size;
+	int		max_pos;
+	int		i;
 
-	ps_crash_exit_if(ft_lstsize(ps->a) != 2);
-	i1 = ps_get(ps->a, 0);
-	i2 = ps_get(ps->a, 1);
-	if (i2 < i1)
-		ps_cmd(ps, SA);
+	size = ft_lstsize(lst);
+	if (size < 2)
+		return (1);
+	max_pos = 0;
+	i = 1;
+	while (i < size)
+	{
+		if (ps_get(lst, i) > ps_get(lst, max_pos))
+			max_pos = i;
+		i++;
+	}
+	i = 0;
+	while (i < size)
+	{
+		if (ps_get(lst, i) > ps_get(lst, (i + 1) % size) && i != max_pos)
+			return (0);
+		i++;
+	}
+	return (1);
 }

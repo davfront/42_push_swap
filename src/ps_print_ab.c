@@ -6,14 +6,13 @@
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:39:42 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/02 17:42:14 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/04 01:31:23 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-void	ps_print_item(t_list *lst, int i, int size)
+static void	ps_print_item(t_list *lst, int i, int size)
 {
 	int		lst_size;
 	int		node_index;

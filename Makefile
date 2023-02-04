@@ -36,6 +36,7 @@ SRCS_FILES			=	\
 						list/ps_is_list_sorted.c\
 						list/ps_is_list_sorted_with_offset.c\
 						list/ps_find_pos_index.c\
+						list/ps_find_pos_range.c\
 						\
 						sort/ps_move_index_to_top.c\
 						sort/ps_sort_2.c\

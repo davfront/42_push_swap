@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ps_crash_exit()
+void	ps_crash_exit(void)
 {
 	ft_putstr_fd("UNEXPECTED ERROR\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);

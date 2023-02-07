@@ -6,7 +6,7 @@
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:43:23 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/03 17:15:51 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:06:32 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,13 @@ void	ps_cmd(t_ps *ps, t_cmd cmd)
 {
 	ps_cmd_call(ps, cmd);
 	ps_cmd_print(cmd);
+}
+
+void	ps_cmd_n(t_ps *ps, t_cmd cmd, int n)
+{
+	while (n > 0)
+	{
+		ps_cmd(ps, cmd);
+		n--;
+	}
 }

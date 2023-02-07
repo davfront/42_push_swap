@@ -17,7 +17,7 @@ int	ps_key(t_list *node, int index)
 	t_item	*item;
 
 	if (!node || !node->content || index < 0 || index > ft_lstsize(node) - 1)
-		exit(EXIT_FAILURE);
+		ps_crash_exit();
 	while (index > 0)
 	{
 		node = node->next;

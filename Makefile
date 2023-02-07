@@ -17,26 +17,34 @@ CFLAGS				=	-Wall -Wextra -Werror
 RM					=	rm -rf
 
 SRCS_FILES			=	\
+						int/ps_imin.c\
+						\
 						utils/ps_init.c\
 						utils/ps_free.c\
 						utils/ps_error_exit.c\
-						utils/ps_get_value.c\
 						\
 						input/ps_check_duplicates.c\
 						input/ps_set_keys.c\
 						input/ps_get_inputs.c\
+						\
+						ps_print_ab.c\
 						\
 						cmd/ps_swap.c\
 						cmd/ps_push.c\
 						cmd/ps_rotate.c\
 						cmd/ps_reverse_rotate.c\
 						cmd/ps_cmd.c\
+						cmd/ps_cmd_rots.c\
 						\
 						list/ps_key.c\
 						list/ps_is_list_sorted.c\
 						list/ps_is_list_sorted_with_offset.c\
 						list/ps_find_index.c\
 						list/ps_find_index_in_range.c\
+						list/ps_min.c\
+						list/ps_max.c\
+						list/ps_closest_below.c\
+						list/ps_closest_above.c\
 						\
 						sort/ps_rotate_to_top.c\
 						sort/ps_sort_2.c\
@@ -44,9 +52,9 @@ SRCS_FILES			=	\
 						sort/ps_sort_3_more.c\
 						sort/ps_sort_radix.c\
 						sort/ps_sort_by_chunk.c\
+						sort/ps_sort_counting.c\
 						sort/ps_sort.c\
 						\
-						ps_print_ab.c\
 						push_swap.c\
 
 SRCS_DIR			=	./src

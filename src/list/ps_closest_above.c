@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort.c                                          :+:      :+:    :+:   */
+/*   ps_closest_above.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 13:37:24 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/07 15:28:55 by dapereir         ###   ########.fr       */
+/*   Created: 2023/02/01 14:17:57 by dapereir          #+#    #+#             */
+/*   Updated: 2023/02/07 14:17:00 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_sort(t_ps *ps)
+int	ps_closest_above(t_list *lst, int key)
 {
-	if (ps->length < 2)
-		return ;
-	else if (ps->length == 2)
-		ps_sort_2(ps);
-	else if (ps->length == 3)
-		ps_sort_3(ps);
-	else if (ps->length <= 5)
-		ps_sort_3_more(ps);
-	else
-		ps_sort_counting(ps);
+	int		size;
+	int		ca;
+	int		i;
+
+	size = ft_lstsize(lst);
+	if (size < 1)
+		ps_crash_exit();
+	ca = -1;
+	i = 0;
+	while (i < size)
+	{
+		if (ps_key(lst, i) > key && (ca == -1 || ps_key(lst, i) < ca))
+			ca = ps_key(lst, i);
+		i++;
+	}
+	if (ca == -1)
+		return (ps_min(lst));
+	return (ca);
 }

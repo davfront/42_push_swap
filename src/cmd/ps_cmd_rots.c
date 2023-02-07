@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort.c                                          :+:      :+:    :+:   */
+/*   ps_cmd_rots.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 13:37:24 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/07 15:28:55 by dapereir         ###   ########.fr       */
+/*   Created: 2023/02/07 12:09:04 by dapereir          #+#    #+#             */
+/*   Updated: 2023/02/07 14:42:38 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_sort(t_ps *ps)
+void	ps_cmd_rots(t_ps *ps, t_rots rots)
 {
-	if (ps->length < 2)
-		return ;
-	else if (ps->length == 2)
-		ps_sort_2(ps);
-	else if (ps->length == 3)
-		ps_sort_3(ps);
-	else if (ps->length <= 5)
-		ps_sort_3_more(ps);
-	else
-		ps_sort_counting(ps);
+	ps_cmd_n(ps, RR, rots.rr);
+	ps_cmd_n(ps, RA, rots.ra);
+	ps_cmd_n(ps, RB, rots.rb);
+	ps_cmd_n(ps, RRR, rots.rrr);
+	ps_cmd_n(ps, RRA, rots.rra);
+	ps_cmd_n(ps, RRB, rots.rrb);
 }

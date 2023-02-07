@@ -6,7 +6,7 @@
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:39:42 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/04 01:31:23 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:19:46 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static void	ps_print_item(t_list *lst, int i, int size)
 {
 	int		lst_size;
-	int		node_index;
+	int		index;
 	t_list	*node;
 	t_item	*item;
 
 	lst_size = ft_lstsize(lst);
-	node_index = i - size + lst_size;
-	if (node_index >= 0)
+	index = i - size + lst_size;
+	if (index >= 0)
 	{
-		node = ft_lst_by_index(lst, node_index);
+		node = ft_lst_by_index(lst, index);
 		item = (t_item *)(node->content);
-		ft_printf("\t%i\t%i", item->index, item->value);
+		ft_printf("\t%i\t%i", item->key, item->value);
 	}
 	else
 		ft_printf("\t\t");

@@ -23,7 +23,7 @@ SRCS_FILES			=	\
 						utils/ps_get_value.c\
 						\
 						input/ps_check_duplicates.c\
-						input/ps_set_indexes.c\
+						input/ps_set_keys.c\
 						input/ps_get_inputs.c\
 						\
 						cmd/ps_swap.c\
@@ -32,13 +32,13 @@ SRCS_FILES			=	\
 						cmd/ps_reverse_rotate.c\
 						cmd/ps_cmd.c\
 						\
-						list/ps_get.c\
+						list/ps_key.c\
 						list/ps_is_list_sorted.c\
 						list/ps_is_list_sorted_with_offset.c\
-						list/ps_find_pos_index.c\
-						list/ps_find_pos_range.c\
+						list/ps_find_index.c\
+						list/ps_find_index_in_range.c\
 						\
-						sort/ps_move_index_to_top.c\
+						sort/ps_rotate_to_top.c\
 						sort/ps_sort_2.c\
 						sort/ps_sort_3.c\
 						sort/ps_sort_3_more.c\

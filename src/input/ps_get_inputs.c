@@ -69,7 +69,7 @@ static void	ps_set_input(t_ps *ps, char **str, t_item *item)
 		ps_error_exit(ps);
 	value = ft_atoi(*str);
 	(*item).value = value;
-	(*item).index = -1;
+	(*item).key = -1;
 	ft_lstadd_back(&ps->a, ft_lstnew(item));
 	ft_free((void **)str);
 }
@@ -106,5 +106,5 @@ void	ps_get_inputs(t_ps *ps, int argc, char **argv)
 {
 	ps_parse_inputs(ps, argc, argv);
 	ps_check_duplicates(ps);
-	ps_set_indexes(ps);
+	ps_set_keys(ps);
 }

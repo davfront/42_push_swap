@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_get.c                                     :+:      :+:    :+:   */
+/*   ps_find_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 14:17:57 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/01 16:48:06 by dapereir         ###   ########.fr       */
+/*   Created: 2023/02/01 13:41:48 by dapereir          #+#    #+#             */
+/*   Updated: 2023/02/07 11:20:40 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_get(t_list *node, int offset)
+int	ps_find_index(t_list *lst, int key)
 {
-	t_item	*item;
+	int		size;
+	int		index;
 
-	if (!node || !node->content || offset < 0 || offset > ft_lstsize(node) - 1)
-		exit(EXIT_FAILURE);
-	while (offset > 0)
+	size = ft_lstsize(lst);
+	index = 0;
+	while (index < size)
 	{
-		node = node->next;
-		offset--;
+		if (ps_key(lst, index) == key)
+			return (index);
+		index++;
 	}
-	item = (t_item *)(node->content);
-	return (item->index);
+	return (-1);
 }

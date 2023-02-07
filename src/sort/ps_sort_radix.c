@@ -6,7 +6,7 @@
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:41:48 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/02 16:00:37 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:13:58 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ps_sort_radix(t_ps *ps)
 		j = 0;
 		while (j < ps->length)
 		{
-			if ((ps_get(ps->a, 0) >> i) & 1)
+			if ((ps_key(ps->a, 0) >> i) & 1)
 				ps_cmd(ps, RA);
 			else
 				ps_cmd(ps, PB);

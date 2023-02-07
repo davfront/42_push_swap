@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_find_pos_index.c                                :+:      :+:    :+:   */
+/*   ps_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 13:41:48 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/04 01:32:17 by dapereir         ###   ########.fr       */
+/*   Created: 2023/02/01 14:17:57 by dapereir          #+#    #+#             */
+/*   Updated: 2023/02/01 16:48:06 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_find_pos_index(t_list *lst, int index)
+int	ps_key(t_list *node, int index)
 {
-	int		size;
-	int		pos;
+	t_item	*item;
 
-	size = ft_lstsize(lst);
-	pos = 0;
-	while (pos < size)
+	if (!node || !node->content || index < 0 || index > ft_lstsize(node) - 1)
+		exit(EXIT_FAILURE);
+	while (index > 0)
 	{
-		if (ps_get(lst, pos) == index)
-			return (pos);
-		pos++;
+		node = node->next;
+		index--;
 	}
-	return (-1);
+	item = (t_item *)(node->content);
+	return (item->key);
 }

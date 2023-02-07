@@ -6,13 +6,13 @@
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:43:23 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/07 12:06:32 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:58:44 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ps_cmd_call(t_ps *ps, t_cmd cmd)
+void	ps_cmd_call(t_ps *ps, t_cmd cmd)
 {
 	if (cmd == SA)
 		ps_sa(ps);

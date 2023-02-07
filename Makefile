@@ -11,12 +11,16 @@
 # **************************************************************************** #
 
 NAME				=	push_swap
+BONUS				=	checker
 
 CC					=	cc
 CFLAGS				=	-Wall -Wextra -Werror
 RM					=	rm -rf
 
-SRCS_FILES			=	\
+SRCS_DIR			=	./src
+OBJS_DIR			=	./obj
+
+SRCS_COMMON_FILES		=	\
 						int/ps_imin.c\
 						\
 						utils/ps_init.c\
@@ -54,15 +58,16 @@ SRCS_FILES			=	\
 						sort/ps_sort_by_chunk.c\
 						sort/ps_sort_counting.c\
 						sort/ps_sort.c\
-						\
-						push_swap.c\
 
-SRCS_DIR			=	./src
+SRCS_FILES			=	$(SRCS_COMMON_FILES) push_swap.c
 SRCS				=	$(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
-
 OBJS_FILES			=	$(SRCS_FILES:.c=.o)
-OBJS_DIR			=	./obj
 OBJS				=	$(addprefix $(OBJS_DIR)/, $(OBJS_FILES))
+
+SRCS_BONUS_FILES	=	$(SRCS_COMMON_FILES) checker_bonus.c
+SRCS_BONUS			=	$(addprefix $(SRCS_DIR)/, $(SRCS_BONUS_FILES))
+OBJS_BONUS_FILES	=	$(SRCS_BONUS_FILES:.c=.o)
+OBJS_BONUS			=	$(addprefix $(OBJS_DIR)/, $(OBJS_BONUS_FILES))
 
 HEADER_DIR			=	./include
 HEADER				=	$(HEADER_DIR)/push_swap.h
@@ -83,6 +88,9 @@ $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c Makefile $(FT) $(HEADER)
 $(NAME):			$(OBJS) $(FT)
 					$(CC) $(CFLAGS) $(OBJS) $(FT_FLAGS) -o $(NAME)
 
+bonus:				$(OBJS_BONUS) $(FT)
+					$(CC) $(CFLAGS) $(OBJS_BONUS) $(FT_FLAGS) -o $(BONUS)
+
 $(FT):
 					$(MAKE) -C $(FT_DIR)
 
@@ -93,7 +101,7 @@ clean:
 
 .PHONY: fclean
 fclean:				clean
-					$(RM) $(NAME)
+					$(RM) $(NAME) $(BONUS)
 					$(MAKE) -C $(FT_DIR) fclean
 
 .PHONY: re

@@ -27,7 +27,7 @@ void	ps_crash_exit_if(int condition)
 void	ps_error_exit(t_ps *ps)
 {
 	ps_free(ps);
-	ft_putstr_fd("ERROR\n", STDERR_FILENO);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 

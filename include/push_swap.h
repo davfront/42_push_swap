@@ -82,6 +82,7 @@ void	ps_rr(t_ps *ps);
 void	ps_rra(t_ps *ps);
 void	ps_rrb(t_ps *ps);
 void	ps_rrr(t_ps *ps);
+void	ps_cmd_call(t_ps *ps, t_cmd cmd);
 void	ps_cmd(t_ps *ps, t_cmd cmd);
 void	ps_cmd_n(t_ps *ps, t_cmd cmd, int n);
 void	ps_cmd_rots(t_ps *ps, t_rots rots);

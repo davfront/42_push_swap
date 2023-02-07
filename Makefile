@@ -20,7 +20,7 @@ RM					=	rm -rf
 SRCS_DIR			=	./src
 OBJS_DIR			=	./obj
 
-SRCS_COMMON_FILES		=	\
+SRCS_COMMON_FILES	=	\
 						int/ps_imin.c\
 						\
 						utils/ps_init.c\
@@ -31,7 +31,7 @@ SRCS_COMMON_FILES		=	\
 						input/ps_set_keys.c\
 						input/ps_get_inputs.c\
 						\
-						ps_print_ab.c\
+						print/ps_print_ab.c\
 						\
 						cmd/ps_swap.c\
 						cmd/ps_push.c\

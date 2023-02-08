@@ -16,6 +16,8 @@ void	ps_sort(t_ps *ps)
 {
 	if (ps->length < 2)
 		return ;
+	else if (ps_is_list_sorted(ps->a))
+		return ;
 	else if (ps->length == 2)
 		ps_sort_2(ps);
 	else if (ps->length == 3)

@@ -88,8 +88,11 @@ $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c Makefile $(FT) $(HEADER)
 $(NAME):			$(OBJS) $(FT)
 					$(CC) $(CFLAGS) $(OBJS) $(FT_FLAGS) -o $(NAME)
 
-bonus:				$(OBJS_BONUS) $(FT)
+$(BONUS):			$(OBJS_BONUS) $(FT)
 					$(CC) $(CFLAGS) $(OBJS_BONUS) $(FT_FLAGS) -o $(BONUS)
+
+.PHONY: bonus		
+bonus:				$(BONUS)
 
 $(FT):
 					$(MAKE) -C $(FT_DIR)

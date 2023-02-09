@@ -10,12 +10,32 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME				=	push_swap
-BONUS				=	checker
+
+# COLORS
+
+RED					=	\033[0;31m
+RED_BOLD			=	\033[1;31m
+GREEN				=	\033[0;32m
+GREEN_BOLD			=	\033[1;32m
+YELLOW				=	\033[0;33m
+YELLOW_BOLD			=	\033[1;33m
+CYAN				=	\033[0;36m
+CYAN_BOLD			=	\033[1;36m
+EOC					=	\033[0m
+BOLD				=	\033[1m
+
+
+# COMMANDS
 
 CC					=	cc
 CFLAGS				=	-Wall -Wextra -Werror
 RM					=	rm -rf
+
+
+# PROJECT
+
+NAME				=	push_swap
+BONUS				=	checker
 
 SRCS_DIR			=	./src
 OBJS_DIR			=	./obj
@@ -83,30 +103,51 @@ all:				$(NAME)
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c Makefile $(FT) $(HEADER)
 					mkdir -p $(@D)
+					echo "$(GREEN_BOLD)create %.o ➞$(EOC) $@ $(RED)"
 					$(CC) $(CFLAGS) $(HEADER_INC) $(FT_INC) -c $< -o $@
+					echo -n "$(EOC)"
 
 $(NAME):			$(OBJS) $(FT)
+					echo "$(GREEN_BOLD)create exe ➞$(EOC) $@ $(RED)"
 					$(CC) $(CFLAGS) $(OBJS) $(FT_FLAGS) -o $(NAME)
+					echo -n "$(EOC)"
 
 $(BONUS):			$(OBJS_BONUS) $(FT)
+					echo "$(GREEN_BOLD)create exe ➞$(EOC) $@ $(RED)"
 					$(CC) $(CFLAGS) $(OBJS_BONUS) $(FT_FLAGS) -o $(BONUS)
+					echo -n "$(EOC)"
 
 .PHONY: bonus		
 bonus:				$(BONUS)
 
 $(FT):
+					echo "$(GREEN_BOLD)create lib ➞$(EOC) $@"
 					$(MAKE) -C $(FT_DIR)
+					echo -n "$(EOC)"
 
 .PHONY: clean
 clean:
+					echo "$(RED_BOLD)delete %.o ➞$(EOC) $(OBJS_DIR) $(RED)"
 					$(RM) $(OBJS_DIR)
+					echo -n "$(EOC)"
+					echo "$(RED_BOLD)delete %.o ➞$(EOC) $(FT_DIR) $(RED)"
 					$(MAKE) -C $(FT_DIR) clean
+					echo -n "$(EOC)"
 
 .PHONY: fclean
 fclean:				clean
-					$(RM) $(NAME) $(BONUS)
+					echo "$(RED_BOLD)delete lib ➞$(EOC) $(FT) $(RED)"
 					$(MAKE) -C $(FT_DIR) fclean
+					echo -n "$(EOC)"
+					echo "$(RED_BOLD)delete exe ➞$(EOC) $(NAME) $(RED)"
+					$(RM) $(NAME)
+					echo -n "$(EOC)"
+					echo "$(RED_BOLD)delete exe ➞$(EOC) $(BONUS) $(RED)"
+					$(RM) $(BONUS)
+					echo -n "$(EOC)"
 
 .PHONY: re
 re:					fclean
 					$(MAKE) all
+
+.SILENT:

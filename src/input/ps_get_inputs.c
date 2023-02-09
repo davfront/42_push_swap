@@ -41,12 +41,12 @@ static int	ps_is_str_int(char *s)
 	int		is_neg;
 	int		is_overflowed;
 
-	if (!s)
+	if (!s || !*s)
 		return (0);
 	is_neg = (*s == '-');
-	if (*s == '-' || *s == '+')
+	if ((*s == '-' || *s == '+') && ft_isdigit(*(s + 1)))
 		s++;
-	while (*s == '0' && *(s + 1))
+	while (*s == '0' && ft_isdigit(*(s + 1)))
 		s++;
 	abs = s;
 	while (ft_isdigit(*s))
@@ -88,6 +88,7 @@ static void	ps_parse_inputs(t_ps *ps, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		ps_error_exit_if(ps, !*argv[i]);
 		strs = ft_split(argv[i], ' ');
 		ps_error_exit_if(ps, !strs);
 		j = 0;

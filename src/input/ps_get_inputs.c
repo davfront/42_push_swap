@@ -64,13 +64,20 @@ static int	ps_is_str_int(char *s)
 static void	ps_set_input(t_ps *ps, char **str, t_item *item)
 {
 	int		value;
+	void	*new_content;
 
 	if (!str || !*str || !ps_is_str_int(*str))
 		ps_error_exit(ps);
 	value = ft_atoi(*str);
 	(*item).value = value;
 	(*item).key = -1;
-	ft_lstadd_back(&ps->a, ft_lstnew(item));
+	new_content = ft_lstnew(item);
+	if (!new_content)
+	{
+		ft_free((void **)str);
+		ps_error_exit(ps);
+	}
+	ft_lstadd_back(&ps->a, new_content);
 	ft_free((void **)str);
 }
 

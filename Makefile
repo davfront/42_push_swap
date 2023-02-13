@@ -21,8 +21,9 @@ YELLOW				=	\033[0;33m
 YELLOW_BOLD			=	\033[1;33m
 CYAN				=	\033[0;36m
 CYAN_BOLD			=	\033[1;36m
-EOC					=	\033[0m
 BOLD				=	\033[1m
+FAINT				=	\033[2m
+EOC					=	\033[0m
 
 
 # COMMANDS
@@ -30,6 +31,13 @@ BOLD				=	\033[1m
 CC					=	cc
 CFLAGS				=	-Wall -Wextra -Werror
 RM					=	rm -rf
+
+SILENTFLAG			= 	$(if $(filter s, $(MAKEFLAGS)),1,0)
+ifeq ($(SILENTFLAG),1)
+ECHO				=	\#
+else
+ECHO				=	echo
+endif
 
 
 # PROJECT
@@ -102,52 +110,45 @@ FT_FLAGS			=	-L $(FT_DIR) -l ft
 all:				$(NAME)
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c Makefile $(FT) $(HEADER)
-					mkdir -p $(@D)
-					echo "$(GREEN_BOLD)create %.o ➞$(EOC) $@ $(RED)"
-					$(CC) $(CFLAGS) $(HEADER_INC) $(FT_INC) -c $< -o $@
-					echo -n "$(EOC)"
+					@mkdir -p $(@D)
+					@$(ECHO) "$(GREEN)[create]$(EOC) $@"
+					@$(CC) $(CFLAGS) $(HEADER_INC) $(FT_INC) -c $< -o $@
 
 $(NAME):			$(OBJS) $(FT)
-					echo "$(GREEN_BOLD)create exe ➞$(EOC) $@ $(RED)"
-					$(CC) $(CFLAGS) $(OBJS) $(FT_FLAGS) -o $(NAME)
-					echo -n "$(EOC)"
+					@$(ECHO) "$(GREEN)[create]$(EOC) $@"
+					@$(CC) $(CFLAGS) $(OBJS) $(FT_FLAGS) -o $(NAME)
+					@$(ECHO) "$(GREEN_BOLD)✓ $(NAME) is ready!$(EOC)"
 
 $(BONUS):			$(OBJS_BONUS) $(FT)
-					echo "$(GREEN_BOLD)create exe ➞$(EOC) $@ $(RED)"
-					$(CC) $(CFLAGS) $(OBJS_BONUS) $(FT_FLAGS) -o $(BONUS)
-					echo -n "$(EOC)"
+					@$(ECHO) "$(GREEN)[create]$(EOC) $@"
+					@$(CC) $(CFLAGS) $(OBJS_BONUS) $(FT_FLAGS) -o $(BONUS)
+					@$(ECHO) "$(GREEN_BOLD)✓ $(BONUS) (bonus) is ready!$(EOC)"
 
 .PHONY: bonus		
 bonus:				$(BONUS)
 
 $(FT):
-					echo "$(GREEN_BOLD)create lib ➞$(EOC) $@"
-					$(MAKE) -C $(FT_DIR)
-					echo -n "$(EOC)"
+					@$(ECHO) "$(CYAN)[enter directory]$(EOC) $(FT_DIR)"
+					@$(MAKE) --no-print-directory -C $(FT_DIR)
+					@$(ECHO) "$(CYAN)[leave directory]$(EOC) $(FT_DIR)"
 
 .PHONY: clean
 clean:
-					echo "$(RED_BOLD)delete %.o ➞$(EOC) $(OBJS_DIR) $(RED)"
-					$(RM) $(OBJS_DIR)
-					echo -n "$(EOC)"
-					echo "$(RED_BOLD)delete %.o ➞$(EOC) $(FT_DIR) $(RED)"
-					$(MAKE) -C $(FT_DIR) clean
-					echo -n "$(EOC)"
+					@$(ECHO) "$(RED)[delete]$(EOC) $(OBJS_DIR)"
+					@$(RM) $(OBJS_DIR)
+					@$(ECHO) "$(RED)[delete]$(EOC) $(FT_DIR)"
+					@$(MAKE) --no-print-directory -s -C $(FT_DIR) clean
 
 .PHONY: fclean
 fclean:				clean
-					echo "$(RED_BOLD)delete lib ➞$(EOC) $(FT) $(RED)"
-					$(MAKE) -C $(FT_DIR) fclean
-					echo -n "$(EOC)"
-					echo "$(RED_BOLD)delete exe ➞$(EOC) $(NAME) $(RED)"
-					$(RM) $(NAME)
-					echo -n "$(EOC)"
-					echo "$(RED_BOLD)delete exe ➞$(EOC) $(BONUS) $(RED)"
-					$(RM) $(BONUS)
-					echo -n "$(EOC)"
+					@$(ECHO) "$(RED)[delete]$(EOC) $(FT)"
+					@$(MAKE) --no-print-directory -s -C $(FT_DIR) fclean
+					@$(ECHO) "$(RED)[delete]$(EOC) $(NAME)"
+					@$(RM) $(NAME)
+					@$(ECHO) "$(RED)[delete]$(EOC) $(BONUS)"
+					@$(RM) $(BONUS)
+					@$(ECHO) "$(RED_BOLD)✓ $(NAME) (bonus inc.) is fully cleaned!$(EOC)"
 
 .PHONY: re
 re:					fclean
-					$(MAKE) all
-
-.SILENT:
+					@$(MAKE) --no-print-directory all

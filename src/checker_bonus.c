@@ -6,7 +6,7 @@
 /*   By: dapereir <dapereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:49:47 by dapereir          #+#    #+#             */
-/*   Updated: 2023/02/07 17:08:08 by dapereir         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:05:30 by dapereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	ps_read_cmds(t_ps *ps)
 			ft_free((void **)&cmd_str);
 			ps_error_exit(ps);
 		}
+		ft_free((void **)&cmd_str);
 		cmd_str = ft_gnl(STDIN_FILENO);
 	}
 	ft_free((void **)&cmd_str);
